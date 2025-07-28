@@ -222,7 +222,6 @@
     sprite: Clothing/Eyes/Hud/syndagent.rsi
   - type: ShowSyndicateIcons
   - type: ShowHealthBars
-  - type: SolutionScanner #starlight
 
 - type: entity
   parent: [ClothingEyesGlassesSunglasses, ShowSecurityIcons]
