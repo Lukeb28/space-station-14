@@ -15,6 +15,8 @@ namespace Content.Server.Light.EntitySystems;
 /// </summary>
 public sealed class PoweredLightSystem : SharedPoweredLightSystem
 {
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -74,6 +76,10 @@ public sealed class PoweredLightSystem : SharedPoweredLightSystem
         var query = EntityQueryEnumerator<PoweredLightComponent>();
         while (query.MoveNext(out var uid, out var light))
         {
+            var gridUid = _transform.GetGrid(uid);
+            if (gridUid == null || gridUid != args.Station)
+                return;
+            
             if (args.AlertLevel == "delta" || args.AlertLevel == "epsilon")
                 SetState(uid, false, light);
             else
