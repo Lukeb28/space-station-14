@@ -1,0 +1,6 @@
+# Metaphysical damage. Used in cyberspace.
+- type: damageType
+  id: Program
+  name: damage-type-program
+  armorCoefficientPrice: 1
+  armorFlatPrice: 1
