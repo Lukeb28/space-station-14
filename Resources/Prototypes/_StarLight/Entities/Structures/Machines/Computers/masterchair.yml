@@ -66,41 +66,11 @@
       - HideContextMenu
 
 - type: entity
-  parent:
-  - Incorporeal
-  - BaseMob
-  id: CentcommConsoleEye
-  name: "???"
-  description: "ERROR"
-  categories: [ HideSpawnMenu ]
-  suffix: DO NOT MAP
+  parent: Masterchair
+  id: MasterchairDebug
+  suffix: DO NOT MAP, DEBUG
   components:
-  - type: NoFTL
-  - type: WarpPoint
-    follow: true
-  - type: Eye
-    pvsScale: 1.5
-  - type: StationAiOverlay
-    allowCrossGrid: true
-  - type: Visibility
-    layer: 32768
-  - type: Sprite
-    sprite: _Starlight/Mobs/Net/net_eye.rsi
-    layers:
-    - map: ["base"]
-      state: enemy
-      shader: unshaded
-  - type: SpriteWhitelisted
-    localEntityWhitelist:
-      tags:
-        - Syndicate
-        - Abductor
-    passedLayers:
-      base:
-        state: enemy
-    failedLayers:
-      base:
-        state: centcomm
-  - type: Tag
-    tags:
-    - CantInteract
+  - type: RemoteEyeConsole
+    actions:
+    - SyntrunnerActionExitConsole
+    - ActionCyberspaceAttack

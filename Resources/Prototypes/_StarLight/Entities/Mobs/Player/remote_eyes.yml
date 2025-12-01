@@ -39,6 +39,8 @@
         cooldown: 300 # 5 minutes in seconds
       - !type:RemoteEyeThrowControl
 
+# Abductors
+
 - type: entity
   parent: EnemyConsoleEye
   id: AbductorHumanObservationConsoleEye
@@ -53,6 +55,58 @@
     passedLayers:
       base:
         state: abductor
+    failedLayers:
+      base:
+        state: enemy
+
+# Centcomm
+
+- type: entity
+  parent: EnemyConsoleEye
+  id: CentcommConsoleEye
+  categories: [ HideSpawnMenu ]
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Starlight/Mobs/Net/net_eye.rsi
+    layers:
+    - map: ["base"]
+      state: enemy
+      shader: unshaded
+  - type: SpriteWhitelisted
+    localEntityWhitelist:
+      tags:
+        - Syndicate
+        - Abductor
+    passedLayers:
+      base:
+        state: enemy
+    failedLayers:
+      base:
+        state: centcomm
+
+# Syndie
+
+- type: entity
+  parent: EnemyConsoleEye
+  id: SyndicateConsoleEye
+  categories: [ HideSpawnMenu ]
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Starlight/Mobs/Net/net_eye.rsi
+    layers:
+    - map: ["base"]
+      state: enemy
+      shader: unshaded
+  - type: SpriteWhitelisted
+    localEntityWhitelist:
+      tags:
+        - Syndicate
+        - Ghost
+    passedLayers:
+      base:
+        state: syndicate
     failedLayers:
       base:
         state: enemy
