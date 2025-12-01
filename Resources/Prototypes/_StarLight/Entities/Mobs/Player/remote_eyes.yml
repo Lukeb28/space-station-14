@@ -25,6 +25,9 @@
   - type: Tag
     tags:
     - CantInteract
+  - type: Damageable
+    damageContainer: Cyber
+    damageModifierSet: DefaultCybernetic
 
 - type: entity
   parent: EnemyConsoleEye
