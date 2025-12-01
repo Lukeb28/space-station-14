@@ -28,6 +28,14 @@
   - type: Damageable
     damageContainer: Cyber
     damageModifierSet: DefaultCybernetic
+  - type: Destructible
+    thresholds: 
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviours:
+      - !type:RemoteEyeShockActor
+      - !type:RemoteEyeThrowControl
 
 - type: entity
   parent: EnemyConsoleEye
