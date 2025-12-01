@@ -29,4 +29,10 @@ public sealed partial class RemoteEyeConsoleComponent : Component
 
     [DataField]
     public Color Color { get; set; } = Color.White;
+
+    /// <summary>
+    /// You cannot use the console before this time.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadOnly)]
+    public TimeSpan NotAvailableBefore = TimeSpan.Zero;
 }

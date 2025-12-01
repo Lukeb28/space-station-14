@@ -18,6 +18,8 @@ using Content.Shared._Starlight.Actions.EntitySystems;
 using Content.Shared.Whitelist;
 using Robust.Shared.Player;
 using System.Diagnostics.CodeAnalysis;
+using Robust.Shared.Timing;
+using Robust.Shared.Serialization.TypeSerializers.Implementations;
 
 namespace Content.Server._Starlight.Computers.RemoteEye;
 
@@ -33,6 +35,7 @@ public sealed partial class RemoteEyeSystem : SharedRemoteEyeSystem
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedVirtualItemSystem _virtualItem = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     public override void Initialize()
     {
@@ -87,7 +90,7 @@ public sealed partial class RemoteEyeSystem : SharedRemoteEyeSystem
         RemComp<StationAiOverlayComponent>(actor.Value);
 
         _eye.SetTarget(actor.Value, null);
-        _eye.RefreshVisibilityMask(actor);
+        _eye.RefreshVisibilityMask(actor.Value);
         _eye.SetDrawFov(actor.Value, true);
 
         QueueDel(relay);
@@ -105,6 +108,15 @@ public sealed partial class RemoteEyeSystem : SharedRemoteEyeSystem
         actor = TryComp<MovementRelayTargetComponent>(relay, out var comp)
             && comp.Source is { Valid: true } v ? v : null;
         return actor != null;
+    }
+
+    public bool TrySetRemoteConnectionCooldown(EntityUid console, TimeSpan cooldown)
+    {
+        if (!TryComp<RemoteEyeConsoleComponent>(console, out var comp))
+            return false;
+
+        comp.NotAvailableBefore = _gameTiming.CurTime + cooldown;
+        return true;
     }
 
     private void OnActivatableUIOpenAttemptEvent(Entity<RemoteEyeConsoleComponent> ent, ref ActivatableUIOpenAttemptEvent args)
@@ -141,6 +153,9 @@ public sealed partial class RemoteEyeSystem : SharedRemoteEyeSystem
     private void OnBeaconChosenBuiMsg(Entity<RemoteEyeConsoleComponent> ent, ref BeaconChosenBuiMsg args)
     {
         CameraExit(args.Actor);
+
+        if (ent.Comp.NotAvailableBefore > _gameTiming.CurTime)
+            return;
 
         var beacon = _entityManager.GetEntity(args.Beacon.NetEnt);
         var eye = SpawnAtPosition(ent.Comp.RemoteEntityProto, Transform(beacon).Coordinates);

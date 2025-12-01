@@ -35,6 +35,8 @@
         damage: 100
       behaviours:
       - !type:RemoteEyeShockActor
+      - !type:RemoteEyeConnectionCooldown
+        cooldown: 300 # 5 minutes in seconds
       - !type:RemoteEyeThrowControl
 
 - type: entity
