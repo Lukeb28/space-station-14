@@ -17,6 +17,7 @@ using Content.Shared.Station.Components;
 using Content.Shared._Starlight.Actions.EntitySystems;
 using Content.Shared.Whitelist;
 using Robust.Shared.Player;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Server._Starlight.Computers.RemoteEye;
 
@@ -45,6 +46,9 @@ public sealed partial class RemoteEyeSystem : SharedRemoteEyeSystem
         base.Initialize();
     }
 
+    /// <summary>
+    /// Makes the camera exit from the actor directly.
+    /// </summary>
     public void CameraExit(EntityUid actor)
     {
         if (!TryComp<RelayInputMoverComponent>(actor, out var comp)) 
@@ -64,6 +68,43 @@ public sealed partial class RemoteEyeSystem : SharedRemoteEyeSystem
         _eye.SetDrawFov(actor, true);
 
         QueueDel(relay);
+    }
+
+    /// <summary>
+    /// Makes the camera exit from the relay entity directly.
+    /// </summary>
+    public void CameraExitRelay(EntityUid relay)
+    {
+        if (!TryGetRemoteEyeActor(relay, out var actor) || !TryComp<RelayInputMoverComponent>(actor, out var comp)) 
+            return;
+
+        RemComp(actor.Value, comp);
+
+        RemoveActions(actor.Value, out var remoteEyeActor);
+        if (remoteEyeActor.VirtualItem.HasValue)
+            _virtualItem.DeleteInHandsMatching(actor.Value, remoteEyeActor.VirtualItem.Value);
+
+        RemComp<StationAiOverlayComponent>(actor.Value);
+
+        _eye.SetTarget(actor.Value, null);
+        _eye.RefreshVisibilityMask(actor);
+        _eye.SetDrawFov(actor.Value, true);
+
+        QueueDel(relay);
+    }
+
+    public bool TryGetRemoteEyeRelay(EntityUid actor, [NotNullWhen(true)] out EntityUid? relay)
+    {
+        relay = TryComp<RelayInputMoverComponent>(actor, out var comp)
+            && comp.RelayEntity is { Valid: true } v ? v : null;
+        return relay != null;
+    }
+
+    public bool TryGetRemoteEyeActor(EntityUid relay, [NotNullWhen(true)] out EntityUid? actor)
+    {
+        actor = TryComp<MovementRelayTargetComponent>(relay, out var comp)
+            && comp.Source is { Valid: true } v ? v : null;
+        return actor != null;
     }
 
     private void OnActivatableUIOpenAttemptEvent(Entity<RemoteEyeConsoleComponent> ent, ref ActivatableUIOpenAttemptEvent args)
