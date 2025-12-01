@@ -1,0 +1,19 @@
+# Cyberspace combat debug
+- type: entity
+  id: ActionCyberspaceAttack
+  name: Cyber attack
+  description: Cyber attack.
+  components:
+  - type: Action
+    priority: -20
+    itemIconStyle: BigAction
+    checkConsciousness: false
+    checkCanInteract: false
+    icon:
+      sprite: _Starlight/Interface/Actions/actions_abductor.rsi
+      state: exit
+  - type: InstantAction
+    event: !type:CyberAttackEvent
+      damage:
+        types:
+          Cyber: 10
