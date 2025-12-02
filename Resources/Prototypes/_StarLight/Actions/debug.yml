@@ -12,7 +12,11 @@
     icon:
       sprite: _Starlight/Interface/Actions/actions_abductor.rsi
       state: exit
-  - type: InstantAction
+  - type: TargetAction
+    checkCanAccess: false
+    checkMap: false
+    range: 10
+  - type: EntityTargetAction
     event: !type:CyberAttackEvent
       damage:
         types:
