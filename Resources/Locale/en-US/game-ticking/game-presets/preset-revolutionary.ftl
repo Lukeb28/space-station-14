@@ -81,10 +81,13 @@ rev-headrev-name = [color=#5e9cff]{$name}[/color] recruited {$count} {$count ->
 ## Deconverted window
 
 rev-deconverted-title = Reconverted!
+## Starlight edit to add (text)
 rev-deconverted-text =
     As the last soviet agent has died, the glorious revolution is now over.
 
     You are no longer a revolutionary. You now return back as NanoTrasen contractor.
 
     Any further wrongdoings are logged and punishable. So be nice.
+
+    (De-converted Revolutionaries forget what happened while they were brainwashed)
 rev-deconverted-confirm = Understood
