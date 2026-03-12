@@ -1,0 +1,18 @@
+# =============================================================================
+# RAD (Rapid Advert Device) - places advertising speakers
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Category: Speaker
+# -----------------------------------------------------------------------------
+
+- type: rcd
+  id: RADSpeaker
+  category: Electrical
+  sprite: _Starlight/Structures/Machines/speaker.rsi
+  mode: ConstructObject
+  prototype: Speaker
+  cost: 1
+  delay: 0
+  rotation: User
+  fx: EffectRCDConstruct0
