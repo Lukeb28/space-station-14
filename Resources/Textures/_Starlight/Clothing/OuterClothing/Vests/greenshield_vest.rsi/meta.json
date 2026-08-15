@@ -1,5 +1,5 @@
 {
-    "version": 1,
+    "version": 2,
     "license": "CC-BY-SA-4.0",
     "copyright": "State based Copyright",
     "size": {
@@ -27,12 +27,12 @@
         },
         {
             "name": "inhand-left",
-            "copyright": "Created by hanz5579 on the Starlight Discord and modified into an inhand by Swonki",
+            "copyright": "Created by hanz5579 on the Starlight Discord",
             "directions": 4
         },
         {
             "name": "inhand-right",
-            "copyright": "Created by hanz5579 on the Starlight Discord and modified into an inhand by Swonki",
+            "copyright": "Created by hanz5579 on the Starlight Discord",
             "directions": 4
         }
     ]

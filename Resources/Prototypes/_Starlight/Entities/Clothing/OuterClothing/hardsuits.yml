@@ -1276,9 +1276,9 @@
   description: A protective hardsuit worn by Greenshields. It even has pockets!
   components:
     - type: Sprite
-      sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertleader.rsi
+      sprite: Clothing/OuterClothing/Hardsuits/greenshield.rsi
     - type: Clothing
-      sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertleader.rsi
+      sprite: Clothing/OuterClothing/Hardsuits/greenshield.rsi
     - type: ExplosionResistance
       damageCoefficient: 0.2
     - type: Armor
@@ -1296,7 +1296,6 @@
       tags:
         - WhitelistChameleon
         - Hardsuit
-        - CorgiWearable
     - type: ClothingSpeedModifier
       walkModifier: 1 #Got to be able to keep up with the nice walk of the officials
       sprintModifier: 0.95
@@ -1308,6 +1307,50 @@
         toggleable-clothing: !type:ContainerSlot
         cell_slot: !type:ContainerSlot
         storagebase: !type:Container
+    - type: ToggleableVisuals
+      spriteLayer: light
+      clothingVisuals:
+        outerClothing:
+          - state: equipped-OUTERCLOTHING-light
+            shader: unshaded
+    - type: ItemTogglePointLight
+    - type: Appearance
+    - type: HandheldLight
+      addPrefix: false
+      blinkingBehaviourId: blinking
+      radiatingBehaviourId: radiating
+    - type: PointLight
+      enabled: false
+      color: "#80ff80"
+      radius: 5
+      energy: 2
+      mask: /Textures/Effects/LightMasks/cone.png
+      autoRot: true
+      netsync: false
+    - type: LightBehaviour
+      behaviours:
+        - !type:FadeBehaviour
+          id: radiating
+          interpolate: Linear
+          maxDuration: 2.0
+          startValue: 3.0
+          endValue: 2.0
+          isLooped: true
+          reverseWhenFinished: true
+        - !type:PulseBehaviour
+          id: blinking
+          interpolate: Nearest
+          maxDuration: 1.0
+          startValue: 0.1
+          endValue: 2.0
+          isLooped: true
+    - type: Battery
+      maxCharge: 600
+      startingCharge: 600
+    - type: BatterySelfRecharger
+      autoRechargeRate: 2
+    - type: Item
+      size: Normal
 
 - type: entity
   parent: [ ClothingOuterBaseLarge, AllowSuitStorageClothing ]
