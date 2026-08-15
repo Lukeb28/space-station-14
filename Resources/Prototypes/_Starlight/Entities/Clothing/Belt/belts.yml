@@ -396,9 +396,9 @@
   description: A tactical belt that can hold many items to save the lives of CentComm.
   components:
     - type: Sprite
-      sprite: _Starlight/Clothing/Belt/retro_officer_belt.rsi
+      sprite: _Starlight/Clothing/Belt/greenshield.rsi
     - type: Clothing
-      sprite: _Starlight/Clothing/Belt/retro_officer_belt.rsi
+      sprite: _Starlight/Clothing/Belt/greenshield.rsi
     - type: Appearance
 
 - type: entity
