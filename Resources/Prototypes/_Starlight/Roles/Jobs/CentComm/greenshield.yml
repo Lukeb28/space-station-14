@@ -30,11 +30,11 @@
     back: ClothingBackpackGreenshieldFilled
     shoes: ClothingShoesBootsMagGreenshield
     outerClothing: ClothingOuterHardsuitGreenshield
-    neck: ClothingNeckGreenshield
+    #neck: ClothingNeckGreenshield
     id: CentCommGreenShieldPDA
     eyes: ClothingEyesGlassesCentComm
     ears: ClothingHeadsetCentCom
-    mask: ClothingMaskGasGSO
+    #mask: ClothingMaskGasGSO
     belt: ClothingBeltGreenshieldFilled
     gloves: ClothingHandsGlovesCombat
     suitstorage: WeaponSubMachineGunWt550g
@@ -48,7 +48,7 @@
     back: ClothingBackpackGreenshieldFilled
     shoes: ClothingShoesBootsJackFilled
     outerClothing: ClothingOuterVestGreenshield
-    neck: ClothingNeckGreenshield
+    #neck: ClothingNeckGreenshield
     id: CentCommGreenShieldPDA
     eyes: ClothingEyesGlassesCentComm
     ears: ClothingHeadsetCentCom
@@ -67,11 +67,11 @@
     back: ClothingBackpackGreenshieldFilled
     shoes: ClothingShoesBootsMagGreenshield
     outerClothing: ClothingOuterHardsuitGreenshield
-    neck: ClothingNeckGreenshield
+    #neck: ClothingNeckGreenshield
     id: CentCommGreenShieldPDA
     eyes: ClothingEyesGlassesCentComm
     ears: ClothingHeadsetCentCom
-    mask: ClothingMaskGasGSO
+    #mask: ClothingMaskGasGSO
     belt: ClothingBeltGreenshieldFilled
     gloves: ClothingHandsGlovesCombat
     suitstorage: WeaponSubMachineGunWt550g
@@ -89,7 +89,7 @@
     back: ClothingBackpackGreenshieldFilled
     shoes: ClothingShoesBootsJackFilled
     outerClothing: ClothingOuterVestGreenshield
-    neck: ClothingNeckGreenshield
+    #neck: ClothingNeckGreenshield
     id: CentCommGreenShieldPDA
     eyes: ClothingEyesGlassesCentComm
     ears: ClothingHeadsetCentCom

@@ -44,9 +44,9 @@
   description: A spacious cloak with lots of pockets, worn by Greenshield officers.
   components:
     - type: Sprite
-      sprite: _Starlight/Clothing/Back/thermalcloak.rsi
+      sprite: _Starlight/Clothing/Back/greenshield-cloak.rsi
     - type: Clothing
-      sprite: _Starlight/Clothing/Back/thermalcloak.rsi
+      sprite: _Starlight/Clothing/Back/greenshield-cloak.rsi
     - type: Storage
       grid:
         - 0,0,2,5

@@ -1251,7 +1251,7 @@
 
 #Greenshield Officer
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndieCommander ] # Starlight
+  parent: [ ClothingHeadHelmetHardsuitThanatos ]
   id: ClothingHeadHelmetHardsuitGreenshield
   categories: [ DoNotMap ]
   name: Greenshield hardsuit helmet
@@ -1268,9 +1268,8 @@
           Slash: 0.9
           Piercing: 0.9
           Heat: 0.9
-    - type: Tag
-      tags:
-        - CorgiWearable
+    - type: FlashImmunity
+    - type: EyeProtection
 
 - type: entity
   parent: ClothingHeadHardsuitBase
